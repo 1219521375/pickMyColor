@@ -1,0 +1,21 @@
+<script setup>
+import { ref } from 'vue'
+
+defineProps({
+
+})
+
+const count = ref(0)
+</script>
+
+<template>
+  <h1> Header </h1>
+
+
+</template>
+
+<style scoped>
+.read-the-docs {
+  color: #888;
+}
+</style>
