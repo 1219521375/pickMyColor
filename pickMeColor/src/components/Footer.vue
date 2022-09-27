@@ -1,21 +1,13 @@
 <script setup>
-import { ref } from 'vue'
 
-defineProps({
-
-})
-
-const count = ref(0)
 </script>
 
 <template>
-  <h1>Footer</h1>
-
-
+  <div flex="~" justify-center items-center h-40>
+    <h1>Footer</h1>
+  </div>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
+
 </style>
