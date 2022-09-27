@@ -7,6 +7,8 @@ import Unocss from 'unocss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), Unocss({ /* options */ })]
-
+  plugins: [
+    vue(),
+    Unocss()
+  ]
 })
