@@ -1,5 +1,5 @@
 <script setup>
-import Index from './components/Index.vue'
+import MainBody from './components/MainBody.vue'
 import Footer from './components/Footer.vue'
 import Header from './components/Header.vue';
 
@@ -8,7 +8,7 @@ import Header from './components/Header.vue';
 <template>
   <div flex="~" w-screen h-screen flex-col font-sans text="center gray-700 dark:gray-200">
     <Header />
-    <Index />
+    <MainBody />
     <Footer />
   </div>
 </template>
