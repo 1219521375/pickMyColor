@@ -14,7 +14,14 @@
               <div></div>
               <span>268°</span>
             </div>
-            <div class="colors"></div>
+            <div class="colors">
+              <div class="circular colorsItem"></div>
+              <div class="circular colorsItem"></div>
+              <div class="circular colorsItem"></div>
+              <div class="circular colorsItem"></div>
+              <div class="circular colorsItem"></div>
+              <div class="colorsItem2" i-carbon:add-alt></div>
+            </div>
           </div>
         </div>
       </div>
@@ -75,12 +82,31 @@
 }
 
 .colors {
-  background-color: bisque;
+
   height: 100%;
   width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+}
+
+.colorsItem {
+  width: 22px;
+  height: 22px;
+  margin: 4px;
+}
+
+.colorsItem2 {
+  width: 25px;
+  height: 25px;
+  margin: 4px;
+  color: #d4d4d4;
+}
+
+.circular {
+  background-color: #fbc96e;
+  border-radius: 50%;
+  border: #d4d4d4 solid 2px;
 }
 </style>

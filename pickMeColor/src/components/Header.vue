@@ -8,7 +8,7 @@ const toggleDark = useToggle(isDark)
   <nav flex="~" justify-between w-cen m-au>
     <!-- <img src="" alt="logo"> -->
     <div>
-    <div font="sans 700" text-40>PickMyColor</div>
+    <div font="sans 700" text-60>PickMyColor</div>
     <div class="bar" m-au w-cen></div>
     </div>
     <button class="icon-btn !outline-none" @click="toggleDark()">
@@ -26,11 +26,12 @@ const toggleDark = useToggle(isDark)
 
 .bar{
   height: 7px;
-  width: 12vw;
+  width: 50px;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #6f8681,#D9AFD9,#97D9E1);
   background-size: 700% 700%;
   animation: barcolor 5s ease infinite;
   border-radius: 16px;
+
 }
 
 @keyframes barcolor{
