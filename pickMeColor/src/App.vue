@@ -6,7 +6,7 @@ import Header from './components/Header.vue';
 </script>
 
 <template>
-  <div flex="~" w-screen h-screen flex-col font-sans text="center gray-700 dark:gray-200">
+  <div flex="~" w-screen h-screen flex-col font-sans text="center gray-700 dark:gray-400">
     <Header />
     <MainBody />
     <Footer />
