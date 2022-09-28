@@ -30,6 +30,6 @@ export default defineConfig({
   ],
   rules: [
     ['m-au', { margin: 'auto' }],
-    ['w-cen', { width: '66vw' }],
+    ['w-cen', { width: '60vw' }],
   ]
 })
