@@ -8,7 +8,6 @@
       <div v-for="item in 10" :key="index" class="cardBox">
         <div class="card">
           <div class="cardBody">
-            <div class="copy-icon i-ion:copy-outline"></div>
           </div>
           <div class="cardFooter">
             <div class="angle">
@@ -62,13 +61,6 @@
   background-image: linear-gradient(268deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
 }
 
-.copy-icon{
-  position: relative;
-  width: 23px;
-  height: 23px;
-  margin: 3rem;
-  color: #d4d4d4;
-}
 
 .cardFooter {
   height: 4vw;
@@ -79,7 +71,6 @@
 }
 
 .angle {
-
   height: 100%;
   width: auto;
   font-size: 4rem;
