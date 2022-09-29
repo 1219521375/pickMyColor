@@ -20,7 +20,7 @@
               <div class="circular colorsItem"></div>
               <div class="circular colorsItem"></div>
               <div class="circular colorsItem"></div>
-              <div class="colorsItem2" i-carbon:add-alt></div>
+              <div class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled"></div>
             </div>
           </div>
         </div>
@@ -92,17 +92,18 @@
 }
 
 .colorsItem {
-  width: 22px;
-  height: 22px;
-  margin: 4px;
+  width: 24px;
+  height: 24px;
+  margin: 6px;
 }
 
 .colorsItem2 {
-  width: 25px;
-  height: 25px;
+  width: 29px;
+  height: 29px;
   margin: 4px;
   color: #d4d4d4;
 }
+
 
 .circular {
   background-color: #fbc96e;
