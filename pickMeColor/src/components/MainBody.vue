@@ -21,6 +21,7 @@
               <div class="circular colorsItem"></div>
               <div class="circular colorsItem"></div>
               <div class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled"></div>
+              <div class="colorsItem2 i-ion:options-outline hover:i-ion:options"></div>
             </div>
           </div>
         </div>
@@ -60,6 +61,7 @@
   background-image: linear-gradient(268deg, rgb(65, 88, 208) 0%, rgb(200, 80, 192) 46%, rgb(255, 204, 112) 100%);
 }
 
+
 .cardFooter {
   height: 4vw;
   display: flex;
@@ -69,7 +71,6 @@
 }
 
 .angle {
-
   height: 100%;
   width: auto;
   font-size: 4rem;
@@ -82,7 +83,6 @@
 }
 
 .colors {
-
   height: 100%;
   width: 80%;
   display: flex;
@@ -92,9 +92,9 @@
 }
 
 .colorsItem {
-  width: 24px;
-  height: 24px;
-  margin: 6px;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
 }
 
 .colorsItem2 {
