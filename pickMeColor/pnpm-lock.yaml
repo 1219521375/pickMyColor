@@ -9,10 +9,14 @@ specifiers:
   unocss: ^0.45.23
   vite: ^3.1.0
   vue: ^3.2.37
+  vue3-slider: ^1.8.0
+  vue3-ts-picker: ^2.2.5
 
 dependencies:
   '@vueuse/core': 9.3.0_vue@3.2.39
   vue: 3.2.39
+  vue3-slider: 1.8.0_vue@3.2.39
+  vue3-ts-picker: 2.2.5_vue@3.2.39
 
 devDependencies:
   '@iconify-json/carbon': 1.1.8
@@ -1238,6 +1242,23 @@ packages:
       '@vue/runtime-dom': 3.2.39
       '@vue/server-renderer': 3.2.39_vue@3.2.39
       '@vue/shared': 3.2.39
+
+  /vue3-slider/1.8.0_vue@3.2.39:
+    resolution: {integrity: sha512-JzYEEnDiCPHrmpQaHCRaMNg7yZtydY+cbzb+uissRzN3p5+pV5WtIpfYl7nyYZ2hRJzJineZJCq8WvPdRXWGMQ==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      vue: 3.2.39
+    dev: false
+
+  /vue3-ts-picker/2.2.5_vue@3.2.39:
+    resolution: {integrity: sha512-GJyRu/Igo7DioiNTpTPTu1tajiglCb41vO8C6itHyt8kfUruseZ5I7/wdjlOJEsSyxbaUSTgc6V0QFAB1CDamg==}
+    peerDependencies:
+      vue: ^3.2.25
+    dependencies:
+      vue: 3.2.39
+    dev: false
 
   /which/2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
