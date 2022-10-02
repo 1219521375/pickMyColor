@@ -11,6 +11,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@uiw/icons": "^2.6.7",
     "@vueuse/core": "^9.3.0",
     "vue": "^3.2.37",
     "vue3-slider": "^1.8.0",

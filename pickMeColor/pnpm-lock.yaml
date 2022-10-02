@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@iconify-json/carbon': ^1.1.8
   '@iconify-json/ion': ^1.1.4
+  '@uiw/icons': ^2.6.7
   '@unocss/reset': ^0.45.25
   '@vitejs/plugin-vue': ^3.1.0
   '@vueuse/core': ^9.3.0
@@ -13,6 +14,7 @@ specifiers:
   vue3-ts-picker: ^2.2.5
 
 dependencies:
+  '@uiw/icons': 2.6.7
   '@vueuse/core': 9.3.0_vue@3.2.39
   vue: 3.2.39
   vue3-slider: 1.8.0_vue@3.2.39
@@ -181,6 +183,10 @@ packages:
 
   /@types/web-bluetooth/0.0.15:
     resolution: {integrity: sha512-w7hEHXnPMEZ+4nGKl/KDRVpxkwYxYExuHOYXyzIzCDzEZ9ZCGMAewulr9IqJu2LR4N37fcnb1XVeuZ09qgOxhA==}
+    dev: false
+
+  /@uiw/icons/2.6.7:
+    resolution: {integrity: sha512-zL5CicCoz7XOthBrMfifno0i3dcFQ21CGeYPldri0Kbf0ocKeJz9uFPkjQvhSqjdoWxxYO4nvl+uZ8KVJtxSEQ==}
     dev: false
 
   /@unocss/astro/0.45.25_vite@3.1.3:
