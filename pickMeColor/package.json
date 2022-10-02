@@ -1,8 +1,8 @@
 {
   "name": "pickmecolor",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -17,11 +17,31 @@
     "vue3-ts-picker": "^2.2.5"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.27.0",
     "@iconify-json/carbon": "^1.1.8",
     "@iconify-json/ion": "^1.1.4",
     "@unocss/reset": "^0.45.25",
     "@vitejs/plugin-vue": "^3.1.0",
+    "eslint": "^8.24.0",
+    "typescript": "^4.8.4",
     "unocss": "^0.45.23",
-    "vite": "^3.1.0"
+    "vite": "^3.1.0",
+    "vue-tsc": "^0.40.13"
+  },
+  "eslintConfig": {
+    "extends": "@antfu",
+    "rules": {
+      "no-undef": "off",
+      "comma-dangle": [
+        "warn",
+        "never"
+      ],
+      "@typescript-eslint/comma-dangle": "off",
+      "arrow-parens": [
+        "warn",
+        "as-needed"
+      ],
+      "no-console": "off"
+    }
   }
 }
