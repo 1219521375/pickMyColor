@@ -1,63 +1,15 @@
-<template>
-
-  <div>
-
-    <div class="card">
-      <div class="cardBody-current">
-
-      </div>
-      <Slider v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D" track-color="#FEFEFE"
-        height="6" width="80%"></Slider>
-
-
-      <div class="cardFooter">
-        <div class="angle">
-          <div></div>
-          <span>{{cachAngle}}°</span>
-        </div>
-        <div class="colors">
-          <div :key="index" v-for="(item, index) in colorArr">
-            <div v-show="!colorPickerFlag" class="circular-current colorsItem" :style="'background-color:'+ item.color +';'">  </div>
-            <button @click="delColor(index)">删除</button>
-            <br/>
-            <!-- 改变分界线的 <input v-model="item.distance" /> -->
-          </div>
-          
-          <button @click="addcolor(true)">添加</button>
-          <div @mouseover="colorPickerFlag = true" @mouseout="colorPickerFlag = false">
-            <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled">
-            </div>
-            
-            <div v-show="colorPickerFlag ">
-              
-              <ColorPicker @changePickerColorBen="selectColor" :color="cacheColor" />
-
-            </div>
-
-          </div>
-
-          <div class="colorsItem2 i-ion:options-outline hover:i-ion:options"></div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</template>
-
 <script setup lang='ts'>
-import { ref, reactive, watch } from 'vue'
+import { reactive, ref, watch } from 'vue'
 import { ColorPicker } from 'vue3-ts-picker'
-import Slider from "vue3-slider"
-
+import Slider from 'vue3-slider'
 
 // 颜色的特征，距离和颜色
-type colorType = {
-  color: string,
+interface colorType {
+  color: string
   distance: number
 }
 
-const colorPickerFlag = ref<boolean>(false);
+const colorPickerFlag = ref<boolean>(false)
 
 const color = ref<string>(' red, blue')
 
@@ -68,11 +20,11 @@ const colorArr = reactive<colorType[]>([
   }
 ])
 
-//缓存的颜色
-const cacheColor = ref("#ccc")
-//旋转
+// 缓存的颜色
+const cacheColor = ref('#ccc')
+// 旋转
 const cachAngle = ref<number>(1)
-const angle = ref<string>("1deg")
+const angle = ref<string>('1deg')
 const addcolor = (flag: boolean) => {
   console.log(1)
   if (flag) {
@@ -82,46 +34,85 @@ const addcolor = (flag: boolean) => {
         distance: -1
       }
     )
-    console.log(colorArr);
+    console.log(colorArr)
   }
   colorPickerFlag.value = false
 }
 
 watch(() => cachAngle, (value, oldvalue) => {
   if (cachAngle.value) {
-    angle.value = cachAngle.value + "deg"
+    angle.value = `${cachAngle.value}deg`
     console.log(angle)
-  } else {
-    angle.value = 0 + "deg"
   }
-
-
+  else {
+    angle.value = `${0}deg`
+  }
 }, { deep: true })
 
 watch(() => colorArr, (value, oldvalue) => {
-  let str = "";
+  let str = ''
   for (let i = 0; i < colorArr.length; ++i) {
-    str += colorArr[i].color;
-    if (colorArr[i].distance >= 0) {
-      str += (" " + colorArr[i].distance + "%")
-    }
-    str += ","
+    str += colorArr[i].color
+    if (colorArr[i].distance >= 0)
+      str += (` ${colorArr[i].distance}%`)
+
+    str += ','
   }
-  color.value = str.substr(0, str.length - 1);
+  color.value = str.substr(0, str.length - 1)
   console.log(color)
 }, { deep: true })
 
 const selectColor = (color: string) => {
   cacheColor.value = color
-
 }
-
 
 const delColor = (index: number) => {
-  colorArr.splice(index, 1);
+  colorArr.splice(index, 1)
 }
-
 </script>
+
+<template>
+  <div>
+    <div class="card">
+      <div class="cardBody-current" />
+      <Slider
+        v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D" track-color="#FEFEFE"
+        height="6" width="80%"
+      />
+
+      <div class="cardFooter">
+        <div class="angle">
+          <div />
+          <span>{{ cachAngle }}°</span>
+        </div>
+        <div class="colors">
+          <div v-for="(item, index) in colorArr" :key="index">
+            <div v-show="!colorPickerFlag" class="circular-current colorsItem" :style="`background-color:${item.color};`" />
+            <button @click="delColor(index)">
+              删除
+            </button>
+            <br>
+            <!-- 改变分界线的 <input v-model="item.distance" /> -->
+          </div>
+
+          <button @click="addcolor(true)">
+            添加
+          </button>
+          <div @mouseover="colorPickerFlag = true" @mouseout="colorPickerFlag = false">
+            <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
+
+            <div v-show="colorPickerFlag ">
+              <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
+            </div>
+          </div>
+
+          <div class="colorsItem2 i-ion:options-outline hover:i-ion:options" />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style scoped>
 .card {
   width: 100%;
@@ -137,7 +128,6 @@ const delColor = (index: number) => {
   border-radius: 16px;
   background-image: linear-gradient(v-bind(angle) , v-bind(color));
 }
-
 
 .cardFooter {
   height: 4vw;
@@ -180,7 +170,6 @@ const delColor = (index: number) => {
   margin: 4px;
   color: #d4d4d4;
 }
-
 
 .circular-current {
   /* background-color: #fbc96e; */
