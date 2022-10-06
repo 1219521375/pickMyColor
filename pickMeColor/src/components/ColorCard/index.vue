@@ -74,31 +74,29 @@ const delColor = (index: number) => {
 <template>
   <div>
     <div class="card">
-      <div class="cardBody-current" />
-      <Slider
-        v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D" track-color="#FEFEFE"
-        height="6" width="80%"
-      />
-
+      <div class="cardBody-current">
+        <Slider v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D"
+          track-color="rgba(255,255,255,0.4)" height="10" width="85%" />
+      </div>
       <div class="cardFooter">
         <div class="angle">
-          <div />
           <span>{{ cachAngle }}°</span>
         </div>
         <div class="colors">
           <div v-for="(item, index) in colorArr" :key="index">
-            <div v-show="!colorPickerFlag" class="circular-current colorsItem" :style="`background-color:${item.color};`" />
-            <button @click="delColor(index)">
+            <div v-show="!colorPickerFlag" class="circular-current colorsItem"
+              :style="`background-color:${item.color};`" />
+            <!-- <button @click="delColor(index)">
               删除
-            </button>
-            <br>
+            </button> -->
+
             <!-- 改变分界线的 <input v-model="item.distance" /> -->
           </div>
 
           <button @click="addcolor(true)">
             添加
           </button>
-          <div @mouseover="colorPickerFlag = true" @mouseout="colorPickerFlag = false">
+          <div @click="colorPickerFlag = !colorPickerFlag">
             <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
 
             <div v-show="colorPickerFlag ">
@@ -126,7 +124,10 @@ const delColor = (index: number) => {
   width: 18vw;
   height: 16vw;
   border-radius: 16px;
-  background-image: linear-gradient(v-bind(angle) , v-bind(color));
+  background-image: linear-gradient(v-bind(angle), v-bind(color));
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardFooter {
