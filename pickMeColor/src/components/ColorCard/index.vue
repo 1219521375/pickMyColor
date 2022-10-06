@@ -85,7 +85,7 @@ const delColor = (index: number) => {
         <div class="colors">
           <div v-for="(item, index) in colorArr" :key="index">
             <div v-show="!colorPickerFlag" class="circular-current colorsItem"
-              :style="`background-color:${item.color};`" />
+              :style="`background-color:${item.color};`" @click="colorPickerFlag = !colorPickerFlag" />
             <!-- <button @click="delColor(index)">
               删除
             </button> -->
@@ -93,10 +93,7 @@ const delColor = (index: number) => {
             <!-- 改变分界线的 <input v-model="item.distance" /> -->
           </div>
 
-          <button @click="addcolor(true)">
-            添加
-          </button>
-          <div @click="colorPickerFlag = !colorPickerFlag">
+          <div @click="addcolor(true)">
             <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
 
             <div v-show="colorPickerFlag ">
