@@ -1,5 +1,5 @@
 <script setup lang='ts'>
-import { reactive, ref, watch } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { ColorPicker } from 'vue3-ts-picker'
 import Slider from 'vue3-slider'
 
@@ -25,6 +25,22 @@ const cacheColor = ref('#ccc')
 // 旋转
 const cachAngle = ref<number>(1)
 const angle = ref<string>('1deg')
+const copyIcon = ref<boolean>(false)
+const copyText = ref<boolean>(false)
+const copied = ref<boolean>(false)
+
+const copiedText = computed(() => {
+  return copied.value ? 'Copied' : 'Copy CSS'
+})
+
+const onSuccess = () => {
+  alert('Copied Success')
+}
+
+const onError = () => {
+  alert('Copied Error')
+}
+
 const addcolor = (flag: boolean) => {
   console.log(1)
   if (flag) {
@@ -74,7 +90,17 @@ const delColor = (index: number) => {
 <template>
   <div>
     <div class="card">
-      <div class="cardBody-current">
+      <div class="cardBody-current" @mouseenter="copyIcon = !copyIcon" @mouseleave="copyIcon = !copyIcon">
+        <button v-if="copyIcon" v-clipboard:copy="cacheColor" v-clipboard:success="onSuccess"
+          v-clipboard:error="onError" absolute float-left left-5 top-5 @click="copied = true">
+          <div color-white flex="~" justify-center items-center @mouseenter="copyText = !copyText"
+            @mouseleave="copyText = !copyText">
+            <div i-material-symbols-content-copy-outline />
+            <div v-if="copyText">
+              <span text-size-5xl>{{ copiedText }}</span>
+            </div>
+          </div>
+        </button>
         <Slider v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D"
           track-color="rgba(255,255,255,0.4)" height="10" width="85%" />
       </div>
@@ -85,18 +111,15 @@ const delColor = (index: number) => {
         <div class="colors">
           <div v-for="(item, index) in colorArr" :key="index">
             <div v-show="!colorPickerFlag" class="circular-current colorsItem"
-              :style="`background-color:${item.color};`" />
-            <button @click="delColor(index)">
+              :style="`background-color:${item.color};`" @click="colorPickerFlag = !colorPickerFlag" />
+            <!-- <button @click="delColor(index)">
               删除
-            </button>
+            </button> -->
 
             <!-- 改变分界线的 <input v-model="item.distance" /> -->
           </div>
 
-          <button @click="addcolor(true)">
-            添加
-          </button>
-          <div @click="colorPickerFlag = !colorPickerFlag">
+          <div @click="addcolor(true)">
             <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
 
             <div v-show="colorPickerFlag ">
