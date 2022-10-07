@@ -1,9 +1,8 @@
 <script setup>
 import MainBody from './components/MainBody.vue'
 import Footer from './components/Footer.vue'
-import Header from './components/Header.vue';
-import ToTop from './components/ToTop/ToTop.vue';
-
+import Header from './components/Header.vue'
+import ToTop from './components/ToTop/ToTop.vue'
 </script>
 
 <template>
@@ -11,7 +10,7 @@ import ToTop from './components/ToTop/ToTop.vue';
     <Header />
     <MainBody />
     <Footer />
-    <ToTop></ToTop>
+    <ToTop />
   </div>
 </template>
 

@@ -17,19 +17,43 @@ import TopCard from "./TopCard/index.vue";
 </template>
 
 <style  scoped>
-.mainBody {
-  margin: auto;
-  width: 63vw;
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  
+  .mainBody {
+    margin: auto;
+    width: 70vw;
+  }
+
+  .cardList {
+    margin-top: 5rem;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cardBox {
+    width: 70vw;
+    height: 79vw;
+  }
 }
 
-.cardList {
-  width: 100%;
-  height: 100%;
-}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 769px) {
+  .mainBody {
+    margin: auto;
+    width: 63vw;
+  }
 
-.cardBox {
-  width: 21vw;
-  height: 22vw;
+  .cardList {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cardBox {
+    width: 21vw;
+    height: 22vw;
+  }
+
 }
 </style>
 
