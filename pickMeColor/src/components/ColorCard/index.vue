@@ -5,9 +5,12 @@ import Slider from 'vue3-slider'
 
 // 颜色的特征，距离和颜色
 interface colorType {
-  color: string
-  distance: number
+  color: string,
+  distance: number,
+  colorPickerFlag: boolean,
+  circularFlag: boolean
 }
+
 
 const colorPickerFlag = ref<boolean>(false)
 
@@ -16,7 +19,9 @@ const color = ref<string>(' red, blue')
 const colorArr = reactive<colorType[]>([
   {
     color: 'red',
-    distance: -1
+    distance: -1,
+    colorPickerFlag: false,
+    circularFlag: true
   }
 ])
 
@@ -42,17 +47,21 @@ const onError = () => {
 }
 
 const addcolor = (flag: boolean) => {
-  console.log(1)
+  if (colorArr.length >= 6){
+    return
+  }
   if (flag) {
     colorArr.push(
       {
         color: cacheColor.value,
-        distance: -1
+        distance: -1,
+        colorPickerFlag: false,
+        circularFlag: true
       }
     )
-    console.log(colorArr)
+
   }
-  colorPickerFlag.value = false
+
 }
 
 watch(() => cachAngle, (value, oldvalue) => {
@@ -78,8 +87,23 @@ watch(() => colorArr, (value, oldvalue) => {
   console.log(color)
 }, { deep: true })
 
+let circularIndex = ref<number>(-1)
 const selectColor = (color: string) => {
-  cacheColor.value = color
+  if (circularIndex.value >= 0) {
+    colorArr[circularIndex.value].color = color + ''
+    console.log(circularIndex, color)
+  }
+
+  //
+}
+const openOrDown = (index: number, flag: boolean) => {
+  let i = 0
+  circularIndex.value = index
+  for (; i < colorArr.length; i++) {
+    if (i != index) {
+      colorArr[i].circularFlag = flag
+    }
+  }
 }
 
 const delColor = (index: number) => {
@@ -110,21 +134,22 @@ const delColor = (index: number) => {
         </div>
         <div class="colors">
           <div v-for="(item, index) in colorArr" :key="index">
-            <div v-show="!colorPickerFlag" class="circular-current colorsItem"
-              :style="`background-color:${item.color};`" @click="colorPickerFlag = !colorPickerFlag" />
-            <!-- <button @click="delColor(index)">
-              删除
-            </button> -->
+            <div v-show="!item.colorPickerFlag && item.circularFlag" class="circular-current colorsItem"
+              :style="`background-color:${item.color};`"
+              @click="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index,false)" />
 
-            <!-- 改变分界线的 <input v-model="item.distance" /> -->
+            <div v-show="item.colorPickerFlag && item.circularFlag"
+              @dblclick="item.colorPickerFlag=!item.colorPickerFlag; openOrDown(index,true); circularIndex=-1">
+              <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
+            </div>
           </div>
 
           <div @click="addcolor(true)">
             <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
 
-            <div v-show="colorPickerFlag ">
+            <!-- <div v-show="colorPickerFlag ">
               <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
-            </div>
+            </div> -->
           </div>
 
           <div class="colorsItem2 i-ion:options-outline hover:i-ion:options" />
