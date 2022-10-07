@@ -86,9 +86,9 @@ const delColor = (index: number) => {
           <div v-for="(item, index) in colorArr" :key="index">
             <div v-show="!colorPickerFlag" class="circular-current colorsItem"
               :style="`background-color:${item.color};`" />
-            <!-- <button @click="delColor(index)">
+            <button @click="delColor(index)">
               删除
-            </button> -->
+            </button>
 
             <!-- 改变分界线的 <input v-model="item.distance" /> -->
           </div>
@@ -112,69 +112,146 @@ const delColor = (index: number) => {
 </template>
 
 <style scoped>
-.card {
-  width: 100%;
-  height: 100%;
-  padding: 1.5vw;
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 1.5vw;
+  }
+
+  .cardBody-current {
+    position: relative;
+    margin: auto;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 16px;
+    background-image: linear-gradient(v-bind(angle), v-bind(color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardFooter {
+    height: 10vw;
+    width: 60vw;
+    margin: auto;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .angle {
+    height: 100%;
+    width: auto;
+    font-size: 4rem;
+    color: #888888;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .colors {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .colorsItem {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  .colorsItem2 {
+    width: 29px;
+    height: 29px;
+    margin: 4px;
+    color: #d4d4d4;
+  }
+
+  .circular-current {
+    /* background-color: #fbc96e; */
+    border-radius: 50%;
+    border: #d4d4d4 solid 2px;
+  }
+
 }
 
-.cardBody-current {
-  position: relative;
-  margin: auto;
-  width: 18vw;
-  height: 16vw;
-  border-radius: 16px;
-  background-image: linear-gradient(v-bind(angle), v-bind(color));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 769px) {
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 1.5vw;
+  }
 
-.cardFooter {
-  height: 4vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
+  .cardBody-current {
+    position: relative;
+    margin: auto;
+    width: 18vw;
+    height: 16vw;
+    border-radius: 16px;
+    background-image: linear-gradient(v-bind(angle), v-bind(color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.angle {
-  height: 100%;
-  width: auto;
-  font-size: 4rem;
-  color: #888888;
-  font-weight: 700;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
+  .cardFooter {
+    height: 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-.colors {
-  height: 100%;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
+  .angle {
+    height: 100%;
+    width: auto;
+    font-size: 4rem;
+    color: #888888;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
 
-.colorsItem {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
-}
+  .colors {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-.colorsItem2 {
-  width: 29px;
-  height: 29px;
-  margin: 4px;
-  color: #d4d4d4;
-}
+  .colorsItem {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
 
-.circular-current {
-  /* background-color: #fbc96e; */
-  border-radius: 50%;
-  border: #d4d4d4 solid 2px;
+  .colorsItem2 {
+    width: 29px;
+    height: 29px;
+    margin: 4px;
+    color: #d4d4d4;
+  }
+
+  .circular-current {
+    /* background-color: #fbc96e; */
+    border-radius: 50%;
+    border: #d4d4d4 solid 2px;
+  }
 }
 </style>
