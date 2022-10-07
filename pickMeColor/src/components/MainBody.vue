@@ -1,12 +1,16 @@
 <script setup lang='ts'>
-import ColorCard from './ColorCard/index.vue'
+import ColorCard from "./ColorCard/index.vue";
+import TopCard from "./TopCard/index.vue";
 </script>
 
 <template>
-  <div flex-1 class="mainBody" justify-center items-center>
-    <div class="cardList" flex-wrap flex="~">
-      <div v-for="index in 9" :key="index" class="cardBox">
-        <ColorCard />
+  <div>
+    <TopCard />
+    <div flex-1 class="mainBody" justify-center items-center>
+      <div class="cardList" flex-wrap flex="~">
+        <div v-for="index in 9" :key="index" class="cardBox">
+          <ColorCard />
+        </div>
       </div>
     </div>
   </div>
