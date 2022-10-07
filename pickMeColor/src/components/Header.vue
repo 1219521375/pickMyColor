@@ -6,7 +6,7 @@ const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-  <nav class="nav" flex="~" justify-between w-cen m-au>
+  <nav class="nav" flex="~" justify-between m-au>
     <div class="title" >
       <div font="sans 700">
         PickMyColor
@@ -26,18 +26,21 @@ const toggleDark = useToggle(isDark)
 @media (max-width: 768px) {
 
   .nav {
-    margin: 0;
+    margin: auto;
     padding: 0;
+    flex-direction: row;
+    
   }
   .title {
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 5rem;
+    margin-right: 5rem;
     font-size: 13rem;
+    justify-content: flex-start
   }
 
   .bar {
     height: 7px;
-    width: 50vw;
+    width: 70rem;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #6f8681, #D9AFD9, #97D9E1);
     background-size: 700% 700%;
     animation: barcolor 5s ease infinite;
@@ -64,6 +67,7 @@ const toggleDark = useToggle(isDark)
 @media (min-width: 769px) {
   .nav {
     margin: auto;
+    width: 60vw;
   }
 
   .bar {

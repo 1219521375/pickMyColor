@@ -91,7 +91,7 @@
 <template>
 
   <hr class="hr-solid">
-  <div class="Foot" pageset flex-1 justify-center items-center h-40>
+  <div class="Foot" pageset flex-1 justify-center items-center>
     <div flex justify-center h-30 >
       <div class="Group_info" h-30>Developed by： <span class="Group_name">PickMyColor小组</span> </div>
       <a class="github" i-carbon-logo-github href="https://github.com/2803713783/pickMyColor"></a>
@@ -110,20 +110,20 @@
     border-top: 1px solid #020214;
   }
   .Foot {
-    padding: 2rem;
-    height: 25vh;
+    padding-top: 2rem;
+    height: 10rem;
     padding-bottom: 20rem;
     margin-bottom: 10rem;
   }
   .github{
-    height: 10vh;
-    width: 10vw;
+    height: 10rem;
+    width: 10rem;
     padding-top: 8rem;
   }
 
   .Group_list {
-    height: 10vh;
-    padding-top: 3vh;
+    height: 20rem;
+    padding-top: 5rem;
     padding-bottom: 2rem;
   }
 }
@@ -137,7 +137,7 @@
 
   .Foot {
     padding: 2rem;
-    height: 20vh;
+    height: 25rem;
     padding-bottom: 20rem;
     margin-bottom: 10rem;
   }
