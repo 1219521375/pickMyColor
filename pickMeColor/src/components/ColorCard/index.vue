@@ -2,16 +2,15 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { ColorPicker } from 'vue3-ts-picker'
 import Slider from 'vue3-slider'
+import KSlider from '../../components/Kslider/index.vue'
 
 // 颜色的特征，距离和颜色
 interface colorType {
-  color: string,
-  distance: number,
-  colorPickerFlag: boolean,
+  color: string
+  distance: number
+  colorPickerFlag: boolean
   circularFlag: boolean
 }
-
-
 const colorPickerFlag = ref<boolean>(false)
 
 const color = ref<string>(' red, blue')
@@ -19,14 +18,14 @@ const color = ref<string>(' red, blue')
 const colorArr = reactive<colorType[]>([
   {
     color: 'red',
-    distance: -1,
+    distance: 5,
     colorPickerFlag: false,
     circularFlag: true
   }
 ])
 
 // 缓存的颜色
-const cacheColor = ref('#ccc')
+const cacheColor = ref('#fff')
 // 旋转
 const cachAngle = ref<number>(1)
 const angle = ref<string>('1deg')
@@ -47,21 +46,18 @@ const onError = () => {
 }
 
 const addcolor = (flag: boolean) => {
-  if (colorArr.length >= 6){
+  if (colorArr.length >= 6)
     return
-  }
   if (flag) {
     colorArr.push(
       {
         color: cacheColor.value,
-        distance: -1,
+        distance: -5,
         colorPickerFlag: false,
         circularFlag: true
       }
     )
-
   }
-
 }
 
 watch(() => cachAngle, (value, oldvalue) => {
@@ -87,10 +83,10 @@ watch(() => colorArr, (value, oldvalue) => {
   console.log(color)
 }, { deep: true })
 
-let circularIndex = ref<number>(-1)
+const circularIndex = ref<number>(-1)
 const selectColor = (color: string) => {
   if (circularIndex.value >= 0) {
-    colorArr[circularIndex.value].color = color + ''
+    colorArr[circularIndex.value].color = `${color}`
     console.log(circularIndex, color)
   }
 
@@ -100,9 +96,8 @@ const openOrDown = (index: number, flag: boolean) => {
   let i = 0
   circularIndex.value = index
   for (; i < colorArr.length; i++) {
-    if (i != index) {
+    if (i !== index)
       colorArr[i].circularFlag = flag
-    }
   }
 }
 
@@ -125,10 +120,13 @@ const delColor = (index: number) => {
             </div>
           </div>
         </button>
-        <Slider v-model="cachAngle" orientation="circular" max="361" step="1" color="#FB278D"
+        <Slider v-model="cachAngle" orientation="circular" max="361" step="10" color="#FB278D"
           track-color="rgba(255,255,255,0.4)" height="10" width="85%" />
       </div>
+
       <div class="cardFooter">
+        <!-- <KSlider class="KSlider" :min="100" :max="200" /> -->
+
         <div class="angle">
           <span>{{ cachAngle }}°</span>
         </div>
@@ -136,22 +134,22 @@ const delColor = (index: number) => {
           <div v-for="(item, index) in colorArr" :key="index">
             <div v-show="!item.colorPickerFlag && item.circularFlag" class="circular-current colorsItem"
               :style="`background-color:${item.color};`"
-              @click="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index,false)" />
+              @click="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index, false)" />
 
             <div v-show="item.colorPickerFlag && item.circularFlag"
-              @dblclick="item.colorPickerFlag=!item.colorPickerFlag; openOrDown(index,true); circularIndex=-1">
+              @dblclick="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index, true); circularIndex = -1">
               <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
             </div>
           </div>
 
           <div @click="addcolor(true)">
-            <div v-show="!colorPickerFlag" class="colorsItem2 i-carbon:add-alt hover:i-carbon:add-filled" />
+            <div v-show="!colorPickerFlag"
+              class="colorsItem2 i-carbon:add-alt w-20px h-20px  hover:i-carbon:add-filled w-20px h-20px" />
 
             <!-- <div v-show="colorPickerFlag ">
               <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
             </div> -->
           </div>
-
           <div class="colorsItem2 i-ion:options-outline hover:i-ion:options" />
         </div>
       </div>
@@ -220,10 +218,9 @@ const delColor = (index: number) => {
   }
 
   .colorsItem2 {
-    width: 29px;
-    height: 29px;
-    margin: 4px;
-    color: #d4d4d4;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
   }
 
   .circular-current {
@@ -236,6 +233,11 @@ const delColor = (index: number) => {
 
 /* 大屏幕（大桌面显示器） */
 @media (min-width: 769px) {
+  .KSlider {
+    position: aabsolute;
+    z-index: 99999
+  }
+
   .card {
     width: 100%;
     height: 100%;

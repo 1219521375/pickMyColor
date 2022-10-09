@@ -15,7 +15,7 @@ import ColorCard from './ColorCard/index.vue'
 <style  scoped>
 /* 超小屏幕（手机，小于 768px） */
 @media (max-width: 768px) {
-  
+
   .mainBody {
     margin: auto;
     width: 70vw;
