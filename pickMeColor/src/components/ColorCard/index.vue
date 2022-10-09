@@ -1,4 +1,5 @@
 <script setup lang='ts'>
+
 import { computed, reactive, ref, watch } from 'vue'
 import { ColorPicker } from 'vue3-ts-picker'
 import Slider from 'vue3-slider'
@@ -13,10 +14,12 @@ interface colorType {
 }
 const colorPickerFlag = ref<boolean>(false)
 
-const color = ref<string>(' red, blue')
+
+const color = ref<string>(" red, blue");
 
 const colorArr = reactive<colorType[]>([
   {
+
     color: 'red',
     distance: 5,
     colorPickerFlag: false,
@@ -24,9 +27,15 @@ const colorArr = reactive<colorType[]>([
   }
 ])
 
+
 // 缓存的颜色
+<<<<<<< HEAD
 const cacheColor = ref('#fff')
+=======
+const cacheColor = ref("#ccc");
+>>>>>>> 50d30be9e228ed3a9375ed50f5329a110a381baa
 // 旋转
+
 const cachAngle = ref<number>(1)
 const angle = ref<string>('1deg')
 const copyIcon = ref<boolean>(false)
@@ -67,24 +76,43 @@ watch(() => cachAngle, (value, oldvalue) => {
   }
   else {
     angle.value = `${0}deg`
-  }
-}, { deep: true })
 
-watch(() => colorArr, (value, oldvalue) => {
-  let str = ''
-  for (let i = 0; i < colorArr.length; ++i) {
-    str += colorArr[i].color
-    if (colorArr[i].distance >= 0)
-      str += (` ${colorArr[i].distance}%`)
-
-    str += ','
   }
-  color.value = str.substr(0, str.length - 1)
-  console.log(color)
-}, { deep: true })
+  colorPickerFlag.value = false;
+};
+
+watch(
+  () => cachAngle,
+  (value, oldvalue) => {
+    if (cachAngle.value) {
+      angle.value = `${cachAngle.value}deg`;
+      console.log(angle);
+    } else {
+      angle.value = `${0}deg`;
+    }
+  },
+  { deep: true }
+);
+
+watch(
+  () => colorArr,
+  (value, oldvalue) => {
+    let str = "";
+    for (let i = 0; i < colorArr.length; ++i) {
+      str += colorArr[i].color;
+      if (colorArr[i].distance >= 0) str += ` ${colorArr[i].distance}%`;
+
+      str += ",";
+    }
+    color.value = str.substr(0, str.length - 1);
+    console.log(color);
+  },
+  { deep: true }
+);
 
 const circularIndex = ref<number>(-1)
 const selectColor = (color: string) => {
+
   if (circularIndex.value >= 0) {
     colorArr[circularIndex.value].color = `${color}`
     console.log(circularIndex, color)
@@ -101,14 +129,16 @@ const openOrDown = (index: number, flag: boolean) => {
   }
 }
 
+
 const delColor = (index: number) => {
-  colorArr.splice(index, 1)
-}
+  colorArr.splice(index, 1);
+};
 </script>
 
 <template>
   <div>
     <div class="card">
+
       <div class="cardBody-current" @mouseenter="copyIcon = !copyIcon" @mouseleave="copyIcon = !copyIcon">
         <button v-if="copyIcon" v-clipboard:copy="cacheColor" v-clipboard:success="onSuccess"
           v-clipboard:error="onError" absolute float-left left-5 top-5 @click="copied = true">
@@ -122,6 +152,7 @@ const delColor = (index: number) => {
         </button>
         <Slider v-model="cachAngle" orientation="circular" max="361" step="10" color="#FB278D"
           track-color="rgba(255,255,255,0.4)" height="10" width="85%" />
+
       </div>
 
       <div class="cardFooter">
@@ -132,9 +163,11 @@ const delColor = (index: number) => {
         </div>
         <div class="colors">
           <div v-for="(item, index) in colorArr" :key="index">
+
             <div v-show="!item.colorPickerFlag && item.circularFlag" class="circular-current colorsItem"
               :style="`background-color:${item.color};`"
               @click="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index, false)" />
+
 
             <div v-show="item.colorPickerFlag && item.circularFlag"
               @dblclick="item.colorPickerFlag = !item.colorPickerFlag; openOrDown(index, true); circularIndex = -1">
@@ -143,12 +176,17 @@ const delColor = (index: number) => {
           </div>
 
           <div @click="addcolor(true)">
+
             <div v-show="!colorPickerFlag"
               class="colorsItem2 i-carbon:add-alt w-20px h-20px  hover:i-carbon:add-filled w-20px h-20px" />
+
+
+
 
             <!-- <div v-show="colorPickerFlag ">
               <ColorPicker :color="cacheColor" @changePickerColorBen="selectColor" />
             </div> -->
+
           </div>
           <div class="colorsItem2 i-ion:options-outline hover:i-ion:options" />
         </div>
