@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-
 import { computed, reactive, ref, watch } from 'vue'
 import { ColorPicker } from 'vue3-ts-picker'
 import Slider from 'vue3-slider'
@@ -14,8 +13,7 @@ interface colorType {
 }
 const colorPickerFlag = ref<boolean>(false)
 
-
-const color = ref<string>(" red, blue");
+const color = ref<string>(' red, blue')
 
 const colorArr = reactive<colorType[]>([
   {
@@ -27,13 +25,10 @@ const colorArr = reactive<colorType[]>([
   }
 ])
 
-
 // 缓存的颜色
-<<<<<<< HEAD
+
 const cacheColor = ref('#fff')
-=======
-const cacheColor = ref("#ccc");
->>>>>>> 50d30be9e228ed3a9375ed50f5329a110a381baa
+
 // 旋转
 
 const cachAngle = ref<number>(1)
@@ -76,10 +71,9 @@ watch(() => cachAngle, (value, oldvalue) => {
   }
   else {
     angle.value = `${0}deg`
-
   }
-  colorPickerFlag.value = false;
-};
+  colorPickerFlag.value = false
+})
 
 watch(
   () => cachAngle,
@@ -92,7 +86,7 @@ watch(
     }
   },
   { deep: true }
-);
+)
 
 watch(
   () => colorArr,

@@ -1,31 +1,32 @@
 <script setup>
-import { useDark, useToggle } from "@vueuse/core";
+import { useDark, useToggle } from '@vueuse/core'
 
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
 </script>
 
 <template>
-
   <nav class="nav" flex="~" justify-between m-au>
-    <div class="title" >
+    <div class="title">
       <div font="sans 700">
         PickMyColor
       </div>
 
       <div class="bar" m-au w-cen />
     </div>
-    <button class="githubIcon" w-cen w-right>
-      <a href="https://github.com/2803713783/pickMyColor" target="_blank">
-        <span class="i-carbon:logo-github">git</span>
-        <span>star</span>
-      </a>
-    </button>
-    <button class="icon-btn !outline-none" @click="toggleDark()">
-      <div v-if="isDark" i-carbon-moon />
-      <div v-else i-carbon-sun />
-      <span class="ml-2">{{ isDark ? "Dark" : "Light" }}</span>
-    </button>
+    <div class="others">
+      <button class="githubIcon">
+        <a href="https://github.com/2803713783/pickMyColor" target="_blank">
+          <span class="i-carbon:logo-github">git</span>
+          <span>star</span>
+        </a>
+      </button>
+      <button class="light icon-btn !outline-none" @click="toggleDark()">
+        <div v-if="isDark" i-carbon-moon />
+        <div v-else i-carbon-sun />
+        <!-- <span class="ml-2">{{ isDark ? "Dark" : "Light" }}</span> -->
+      </button>
+    </div>
   </nav>
 </template>
 
@@ -37,8 +38,21 @@ const toggleDark = useToggle(isDark);
     margin: auto;
     padding: 0;
     flex-direction: row;
-    
+    flex-wrap: wrap;
   }
+
+  .githubIcon {
+    width: 20vw;
+  }
+
+  .others {
+    width: 100%;
+    padding: 0 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
   .title {
     margin-left: 5rem;
     margin-right: 5rem;
@@ -56,41 +70,40 @@ const toggleDark = useToggle(isDark);
 
   }
 
+  .githubIcon span {
+    padding: 0.5vh;
 
-.githubIcon span {
-  padding: 0.5vh;
-}
-
-.bar {
-  height: 7px;
-  width: 50px;
-  background: linear-gradient(
-    -45deg,
-    #ee7752,
-    #e73c7e,
-    #23a6d5,
-    #6f8681,
-    #d9afd9,
-    #97d9e1
-  );
-  background-size: 700% 700%;
-  animation: barcolor 5s ease infinite;
-  border-radius: 16px;
-
-  @keyframes barcolor {
-    0% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0% 50%;
-    }
   }
 
+  .bar {
+    height: 7px;
+    width: 50px;
+    background: linear-gradient(-45deg,
+        #ee7752,
+        #e73c7e,
+        #23a6d5,
+        #6f8681,
+        #d9afd9,
+        #97d9e1);
+    background-size: 700% 700%;
+    animation: barcolor 5s ease infinite;
+    border-radius: 16px;
+
+    @keyframes barcolor {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+  }
 }
 
 /* 大屏幕（大桌面显示器） */
@@ -98,6 +111,13 @@ const toggleDark = useToggle(isDark);
   .nav {
     margin: auto;
     width: 60vw;
+  }
+
+  .others {
+    width: 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .bar {
@@ -109,8 +129,12 @@ const toggleDark = useToggle(isDark);
     border-radius: 16px;
 
   }
-  .title{
-    font-size: 15rem;
+
+  .title {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    font-size: 13rem;
+    justify-content: flex-start
   }
 
   @keyframes barcolor {

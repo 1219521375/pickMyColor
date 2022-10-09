@@ -1,6 +1,6 @@
 <script setup lang='ts'>
-import ColorCard from "./ColorCard/index.vue";
-import TopCard from "./TopCard/index.vue";
+import TopCard from './ToTop/ToTop.vue'
+import ColorCard from './ColorCard/index.vue'
 </script>
 
 <template>
